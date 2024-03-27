@@ -9,6 +9,42 @@
 <body>
 	<!-- the entire body must be written by student -->
     <script type="text/javascript" src="./script.js">
+		    const articles = [
+        "The Great Gatsby",
+        "A Tale of Two Cities",
+        "War and Peace",
+        "To Kill a Mockingbird",
+        "The Catcher in the Rye",
+        "1984",
+        "The Lord of the Rings",
+        "The Hobbit",
+        "The Hunger Games",
+        "A Game of Thrones"
+    ];
+
+    // Function to sort articles ignoring specified words
+    function sortArticles(articles) {
+        const ignoredWords = ["a", "an", "the"];
+        return articles.sort((a, b) => {
+            const firstTitle = a.replace(/^(a|an|the)\s/i, "");
+            const secondTitle = b.replace(/^(a|an|the)\s/i, "");
+            return firstTitle.localeCompare(secondTitle);
+        });
+    }
+
+    // Function to generate list items and insert into the ul
+    function generateListItems(articles) {
+        const sortedArticles = sortArticles(articles);
+        const list = document.getElementById("band");
+        sortedArticles.forEach(article => {
+            const listItem = document.createElement("li");
+            listItem.textContent = article;
+            list.appendChild(listItem);
+        });
+    }
+
+    // Call the function to generate list items
+    generateListItems(articles);
 </script>
 
 </body>
